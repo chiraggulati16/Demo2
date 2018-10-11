@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CoinDetail">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?actionBarSize"
+        android:fitsSystemWindows="true"
+        app:titleTextColor="@color/white"
+        android:theme="@style/Base.ThemeOverlay.AppCompat">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_launcher_background"/>
+
+            <TextView
+                android:id="@+id/nameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                android:text="Bitcoin"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:background="@color/colorPrimaryDark"
+            android:id="@+id/tabLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="fixed"
+            android:layout_gravity="fill"
+            app:tabTextColor="#F5F5F5"
+            app:tabSelectedTextColor="@color/colorAccent">
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:background="#282828">
+
+    </android.support.v4.view.ViewPager>
+
+
+</RelativeLayout>

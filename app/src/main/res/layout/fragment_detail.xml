@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.Detail"
+    >
+
+    <TableLayout
+        android:paddingTop="15dp"
+        android:paddingLeft="5dp"
+        android:id="@+id/tableLayoutGraphFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:id="@+id/nameTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#383838">
+
+            <TextView
+                android:id="@+id/tableNameTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Symbol"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tableNameDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/priceUSDTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tablePriceUSDTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Price (USD)"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tablePriceUSDDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/priceBTCTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#383838">
+
+            <TextView
+                android:id="@+id/tablePriceBTCTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Price (BTC)"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tablePriceBTCDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/volUSDTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tableVolUSDTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="24h Volume"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tableVolUSDDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/mktCapUSDTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#383838">
+
+            <TextView
+                android:id="@+id/tableMktCapTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Market Cap"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tableMktCapDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/availableSupplyTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tableAvailableSupplyTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Available Supply"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tableAvailableSupplyDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/totalSupplyTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#383838">
+
+            <TextView
+                android:id="@+id/tableTotalSupplyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Total Supply"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tableTotalSupplyDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/maxSupplyTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tableMaxSupplyTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Max Supply"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/tableMaxSupplyDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:paddingRight="8dp"
+                android:gravity="end"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/changeTitlesTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#383838">
+
+            <TextView
+                android:id="@+id/table1hrChangeTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Change 1hr"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:id="@+id/table1hrChangeDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:paddingRight="8dp"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:gravity="end" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/table24hrChangeTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Change 24hr"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="8dp"
+                />
+
+            <TextView
+                android:id="@+id/table24hrChangeDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:paddingRight="8dp"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:gravity="end" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:background="#383838">
+            <TextView
+                android:id="@+id/tableWeekChangeTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Change 7d"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:id="@+id/tableWeekChangeDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:paddingRight="8dp"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:gravity="end" />
+
+        </TableRow>
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>

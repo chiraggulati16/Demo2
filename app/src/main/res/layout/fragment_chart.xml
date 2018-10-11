@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.Chart">
+
+    <TextView
+        android:id="@+id/current_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/graphFragmentDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:layout_below="@id/current_price"
+        android:layout_centerHorizontal="true"/>
+
+
+    <TextView
+        android:id="@+id/percent_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/graphFragmentDateTextView"
+        android:layout_centerHorizontal="true"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_marginTop="15dp"
+        android:focusableInTouchMode="true"
+        android:layout_below="@id/percent_change"/>
+
+    <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+        android:id="@+id/chart_interval_button_grp"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+       android:layout_below="@id/chart"
+        app:tbgCheckedButton="@+id/dayButton"
+        app:tbgChildSpacing="auto">
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/dayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/oneDay"
+            android:textSize="16sp"
+            app:tbgMarkerColor="@color/colorAccent" />
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/weekButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Week"
+            android:textSize="16sp"
+            app:tbgMarkerColor="@color/colorAccent" />
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/monthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Month"
+            android:textSize="16sp"
+            app:tbgMarkerColor="@color/colorAccent" />
+
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+        android:id="@+id/threeMonthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/threeMonth"
+        android:textSize="16sp"
+        app:tbgMarkerColor="@color/colorAccent"
+        />
+
+    <com.nex3z.togglebuttongroup.button.CircularToggle
+        android:id="@+id/yearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Year"
+        android:textSize="16sp"
+        app:tbgMarkerColor="@color/colorAccent" />
+
+    <com.nex3z.togglebuttongroup.button.CircularToggle
+        android:id="@+id/allTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/All"
+        android:textSize="16sp"
+        app:tbgMarkerColor="@color/colorAccent" />
+
+</com.nex3z.togglebuttongroup.SingleSelectToggleGroup>
+
+
+</RelativeLayout>
