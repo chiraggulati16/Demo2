@@ -16,6 +16,7 @@
 
     <string name="pref_unit_key" translatable="false">unit</string>
     <string name="pref_unit_label">Settlement Currency</string>
+    <string name="unrounded_usd_chart_price_format">&#36; %1$s</string>
 
     <string name="pref_unit_usd_value" translatable="false">USD</string>
     <string name="pref_unit_btc_value" translatable="false">BTC</string>

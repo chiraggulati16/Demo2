@@ -55,6 +55,12 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
     public FragmentA() {
     }
 
+    public interface FavoritesListUpdater {
+        void removeFavorite(ListItem coin);
+        void addFavorite(ListItem coin);
+        void performFavsSort();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -116,7 +122,8 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
     }
 
     public void getData(final int startItem) {
-        Call<Coin> call=apiInterface.getCoins("/v2/ticker/?start="+startItem+"&limit=100&sort=rank&structure=array");
+       // mSwipeRefreshLayout.setRefreshing(true);
+        Call<Coin> call=apiInterface.getCoins("/v2/ticker/?start="+startItem+"&limit=100&sort=rank&structure=array&convert=BTC");
         call.enqueue(new Callback<Coin>() {
             @Override
             public void onResponse(Call<Coin> call, Response<Coin> response) {
@@ -147,6 +154,8 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                         String mSupply=coin.getData().get(i).getMaxSupply();
                         String circulatorySupply=decimal.format(cirSupply);
                         String totalSupply=decimal.format(tSupply);
+                        Double btcValue=coin.getData().get(i).getQuotes().getBTC().getPrice();
+                        String btcPrice=decimal.format(btcValue);
 
 
                         if (oneHourValue < 0) {
@@ -167,16 +176,17 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                         }
                         ListItem listItem1 = new ListItem(id, rank, name, symbol, price, market, volume,
                                 oneHour, twentyHour, sevenDay, totalSupply
-                        , mSupply, circulatorySupply);
+                        , mSupply, circulatorySupply, btcPrice);
                         items.add(listItem1);
                         adapter.notifyDataSetChanged();
+                   //     mSwipeRefreshLayout.setRefreshing(false);
 
                     }
                 }
             @Override
             public void onFailure(Call<Coin> call, Throwable t) {
                 textView.setVisibility(View.VISIBLE);
-                textView.setText("No Internet Connection");
+                textView.setText(t.getMessage());
                 textView.setTextColor(Color.parseColor("#FFFFFF"));
 
             }

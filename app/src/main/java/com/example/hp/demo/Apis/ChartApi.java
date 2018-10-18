@@ -7,7 +7,7 @@ public class ChartApi {
     public static final String CHART_URL="https://min-api.cryptocompare.com";
     public static Retrofit retrofit=null;
 
-    public static Retrofit chartApiClient()
+    public static Retrofit getChartClient()
     {
         if (retrofit==null) {
             retrofit=new Retrofit.Builder().baseUrl(CHART_URL)

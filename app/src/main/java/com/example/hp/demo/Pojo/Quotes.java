@@ -4,8 +4,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class Quotes{
 
+	@SerializedName("BTC")
+	private BTC bTC;
+
 	@SerializedName("USD")
 	private USD uSD;
+
+	public void setBTC(BTC bTC){
+		this.bTC = bTC;
+	}
+
+	public BTC getBTC(){
+		return bTC;
+	}
 
 	public void setUSD(USD uSD){
 		this.uSD = uSD;
@@ -19,7 +30,8 @@ public class Quotes{
  	public String toString(){
 		return 
 			"Quotes{" + 
-			"uSD = '" + uSD + '\'' + 
+			"bTC = '" + bTC + '\'' + 
+			",uSD = '" + uSD + '\'' + 
 			"}";
 		}
 }

@@ -13,20 +13,30 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hp.demo.CoinDetail;
+import com.example.hp.demo.Fragments.FragmentA;
+import com.example.hp.demo.Model.CoinFavoritesStructures;
 import com.example.hp.demo.Model.ListItem;
 import com.example.hp.demo.R;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
+import com.varunest.sparkbutton.SparkButton;
+import com.varunest.sparkbutton.SparkEventListener;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
     private String imageUrl="https://s2.coinmarketcap.com/static/img/coins/128x128/";
    List<ListItem> listItems;
+
     private Context context;
+    private WeakReference<FragmentA.FavoritesListUpdater> favsUpdateCallbackRef;
+
     public static final String Coin_Name="name";
     public static final String Coin_Id="id";
     public static final String Coin_Symbol="symbol";
     public static final String Coin_Price="price";
+    public static final String Coin_Price_Btc="btcPrice";
     public static final String Coin_Change_one="changeOne";
     public static final String Coin_Change_hour="changeHour";
     public static final String Coin_Change_seven="changeSeven";
@@ -87,22 +97,25 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent=new Intent(context,CoinDetail.class);
                intent.putExtra(Coin_Name, list.getName());
-                intent.putExtra(Coin_Id, list.getId());
+               intent.putExtra(Coin_Id, list.getId());
                intent.putExtra(Coin_Symbol, list.getSymbol());
                intent.putExtra(Coin_Price, list.getPrice());
+               intent.putExtra(Coin_Price_Btc, list.getBtcPrice());
                intent.putExtra(Coin_Change_hour, list.getPercentChange1h());
                intent.putExtra(Coin_Change_one, list.getPercentChange24h());
                intent.putExtra(Coin_Change_seven, list.getPercentChange7d());
-             intent.putExtra(Coin_Circulatory_Supply, list.getCirculatorySupply());
-              intent.putExtra(Coin_Max_Supply, list.getMaxSupply());
-              intent.putExtra(Coin_Total_Supply, list.getTotalSupply());
+               intent.putExtra(Coin_Circulatory_Supply, list.getCirculatorySupply());
+               intent.putExtra(Coin_Max_Supply, list.getMaxSupply());
+               intent.putExtra(Coin_Total_Supply, list.getTotalSupply());
                intent.putExtra(Coin_Volume, list.getVolume24h());
                intent.putExtra(Coin_Market, list.getMarketCap());
-                context.startActivity(intent);
+               context.startActivity(intent);
             }
         });
 
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -121,11 +134,10 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
         TextView twentyFourHour;
         TextView sevenDay;
         public LinearLayout parentLayout;
-
+        private MaterialFavoriteButton favButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
 
             rankView=itemView.findViewById(R.id.idText);
             imageView=itemView.findViewById(R.id.imageView);
@@ -137,6 +149,7 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
             twentyFourHour=itemView.findViewById(R.id.twenty_four_value);
             sevenDay=itemView.findViewById(R.id.seven_day_value);
             parentLayout=itemView.findViewById(R.id.linearLayout);
+            favButton=itemView.findViewById(R.id.currencyListFavButton);
         }
 
 

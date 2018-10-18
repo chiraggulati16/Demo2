@@ -1,39 +1,38 @@
 package com.example.hp.demo.Pojo;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+public class Coin{
 
-public class Coin {
+	@SerializedName("metadata")
+	private Metadata metadata;
 
-    @SerializedName("data")
-    public List<Datum> data;
-    @SerializedName("metadata")
-    private Metadata metadata;
+	@SerializedName("data")
+	private List<DataItem> data;
 
+	public void setMetadata(Metadata metadata){
+		this.metadata = metadata;
+	}
 
+	public Metadata getMetadata(){
+		return metadata;
+	}
 
-    public List<Datum> getData() {
-        return data;
-    }
+	public void setData(List<DataItem> data){
+		this.data = data;
+	}
 
-    public void setData(List<Datum> data) {
-        this.data = data;
-    }
+	public List<DataItem> getData(){
+		return data;
+	}
 
-    public Metadata getMetadata() {
-        return metadata;
-    }
-
-    public void setMetadata(Metadata metadata) {
-        this.metadata = metadata;
-    }
-    @Override
-    public String toString(){
-        return
-                "ResponseArray{" +
-                        "metadata = '" + metadata + '\'' +
-                        ",data = '" + data + '\'' +
-                        "}";
-    }
+	@Override
+ 	public String toString(){
+		return 
+			"Coin{" + 
+			"metadata = '" + metadata + '\'' + 
+			",data = '" + data + '\'' + 
+			"}";
+		}
 }

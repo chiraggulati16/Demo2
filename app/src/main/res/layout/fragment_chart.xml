@@ -6,6 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.Chart">
 
+    <ProgressBar
+        android:id="@+id/chartProgressSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerInParent="true"/>
+
     <TextView
         android:id="@+id/current_price"
         android:layout_width="wrap_content"
@@ -14,6 +21,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:textSize="18sp"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -24,6 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:textSize="16sp"
+        android:textColor="@color/white"
         android:layout_below="@id/current_price"
         android:layout_centerHorizontal="true"/>
 
@@ -64,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/oneDay"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:tbgMarkerColor="@color/colorAccent" />
 
@@ -72,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Week"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:tbgMarkerColor="@color/colorAccent" />
 
@@ -80,6 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Month"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:tbgMarkerColor="@color/colorAccent" />
 
@@ -89,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/threeMonth"
+            android:textColor="@color/white"
         android:textSize="16sp"
         app:tbgMarkerColor="@color/colorAccent"
         />
@@ -98,6 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Year"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:tbgMarkerColor="@color/colorAccent" />
 
@@ -106,6 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/All"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:tbgMarkerColor="@color/colorAccent" />
 

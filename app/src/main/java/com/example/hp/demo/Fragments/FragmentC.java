@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hp.demo.Model.ListItem;
 import com.example.hp.demo.R;
 
 
@@ -18,6 +19,11 @@ public class FragmentC extends Fragment {
 
     public FragmentC() {
         // Required empty public constructor
+    }
+
+    public interface AllCoinsListUpdater {
+        void allCoinsModifyFavorites(ListItem coin);
+        void performAllCoinsSort();
     }
 
 

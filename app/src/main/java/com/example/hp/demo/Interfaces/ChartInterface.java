@@ -9,5 +9,5 @@ import retrofit2.http.Url;
 public interface ChartInterface {
 
     @GET
-    Call<ChartData> getHistory(@Url String url1);
+    Call<ChartData> getChartHistory(@Url String url1);
 }

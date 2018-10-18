@@ -1,5 +1,7 @@
 package com.example.hp.demo.formatters;
 
+import android.content.Context;
+
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
@@ -12,6 +14,12 @@ import java.util.Locale;
  */
 
 public class MonthSlashDayDateFormatter implements IAxisValueFormatter {
+
+    private Context mContext;
+
+    public MonthSlashDayDateFormatter(Context context) {
+        this.mContext=context;
+    }
 
 
     @Override

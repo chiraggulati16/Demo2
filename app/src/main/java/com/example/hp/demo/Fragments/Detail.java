@@ -62,7 +62,7 @@ public class Detail extends Fragment {
         String change1h=intent.getStringExtra(CoinAdapter.Coin_Change_hour);
         String change1d=intent.getStringExtra(CoinAdapter.Coin_Change_one);
         String change7d=intent.getStringExtra(CoinAdapter.Coin_Change_seven);
-        String priceBtc=intent.getStringExtra(CoinAdapter.Coin_Price);
+        String priceBtc=intent.getStringExtra(CoinAdapter.Coin_Price_Btc);
 
         symbol.setText(sym);
         price_usd.setText("$ "+priceUsd);
@@ -79,7 +79,7 @@ public class Detail extends Fragment {
         change1H.setText(change1h.concat("%"));
         change1D.setText(change1d.concat("%"));
         change7D.setText(change7d.concat("%"));
-        price_btc.setText(priceBtc);
+        price_btc.setText("฿ "+priceBtc);
 
         if(change1h.contains("-")) {
             change1H.setTextColor(Color.parseColor("#ff1a1a"));
