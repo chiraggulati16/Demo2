@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
+    android:id="@+id/linearLayout">
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/idText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#FFFFFF"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/idText"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_launcher_background" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/coin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bitcoin"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#DAA520"/>
+
+        <TextView
+            android:id="@+id/coin_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: "
+            android:textSize="13sp"
+            android:textColor="#C0C0C0"
+            android:layout_below="@id/coin_name"
+            android:layout_alignStart="@id/coin_name"
+            android:layout_alignLeft="@id/coin_name" />
+
+        <TextView
+            android:id="@+id/price_value"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_toRightOf="@id/coin_price"
+            android:layout_below="@id/coin_name"/>
+
+        <TextView
+            android:id="@+id/market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Market Cap: "
+            android:textSize="13sp"
+            android:textColor="#C0C0C0"
+            android:layout_below="@id/coin_price"
+            android:layout_alignStart="@id/coin_price"
+            android:layout_alignLeft="@id/coin_price" />
+
+
+        <TextView
+            android:id="@+id/market_value"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/coin_price"
+            android:layout_toRightOf="@id/market"/>
+
+
+        <TextView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume 24h: "
+            android:textSize="13sp"
+            android:textColor="#C0C0C0"
+            android:layout_below="@id/market"
+            android:layout_alignStart="@id/market"
+            android:layout_alignLeft="@id/market" />
+
+        <TextView
+            android:id="@+id/vol_value"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/market"
+            android:layout_toRightOf="@id/volume"/>
+
+        <TextView
+            android:id="@+id/one_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="1h: "
+            android:textSize="13sp"
+            android:textColor="#C0C0C0"
+            android:layout_below="@id/volume"
+            android:layout_alignStart="@id/volume"
+            android:layout_alignLeft="@id/volume" />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/one_hour_value"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:text="1.08%"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginRight="9dp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_toRightOf="@id/one_hour"
+            android:layout_below="@id/volume"/>
+
+        <TextView
+            android:id="@+id/twenty_four"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="24h: "
+            android:textSize="13sp"
+            android:textColor="#C0C0C0"
+            android:layout_below="@id/volume"
+            android:layout_toRightOf="@id/one_hour_value"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/twenty_four_value"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:text="1.16%"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginRight="9dp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_below="@id/volume"
+            android:layout_toRightOf="@id/twenty_four"/>
+
+        <TextView
+            android:id="@+id/seven_day"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="7d: "
+            android:textSize="13sp"
+            android:textColor="#C0C0C0"
+            android:layout_below="@id/volume"
+            android:layout_toRightOf="@id/twenty_four_value"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/seven_day_value"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:text="6.98%"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_below="@id/volume"
+            android:layout_toRightOf="@id/seven_day"/>
+
+        <ImageView
+            android:id="@+id/favsCurrencyListTrashImage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rubbish_bin_grey_24dp"
+            android:contentDescription="Favorite"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textOff=""
+            android:textOn=""/>
+
+    </RelativeLayout>
+
+</LinearLayout>

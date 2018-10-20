@@ -15,11 +15,12 @@ public class ListItem {
     private String maxSupply;
     private String circulatorySupply;
     private String btcPrice;
+    private String website;
 
     public ListItem(String id,String rank, String name, String symbol, String price,
                     String marketCap, String volume24h, String percentChange1h,
                     String percentChange24h, String percentChange7d, String totalSupply,
-                    String maxSupply, String circulatorySupply, String btcPrice) {
+                    String maxSupply, String circulatorySupply, String btcPrice, String website) {
         this.id = id;
         this.rank=rank;
         this.name = name;
@@ -34,6 +35,7 @@ public class ListItem {
         this.circulatorySupply=circulatorySupply;
         this.maxSupply=maxSupply;
         this.btcPrice=btcPrice;
+        this.website=website;
     }
 
     /*public ListItem(String id, String name, String symbol) {
@@ -97,5 +99,8 @@ public class ListItem {
     public String getBtcPrice() {
         return btcPrice;
     }
-}
 
+    public String getWebsite() {
+        return website;
+    }
+}

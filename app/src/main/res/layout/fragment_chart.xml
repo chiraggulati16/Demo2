@@ -21,7 +21,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:textSize="18sp"
-        android:textColor="@color/white"
+        android:textColor="@color/deepSkyBlue"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:textSize="16sp"
-        android:textColor="@color/white"
+        android:textColor="@color/cornFlowerBlue"
         android:layout_below="@id/current_price"
         android:layout_centerHorizontal="true"/>
 

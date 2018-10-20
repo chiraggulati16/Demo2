@@ -37,7 +37,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private LinearLayoutManager layoutManager;
     private RecyclerView recyclerView;
@@ -49,18 +49,16 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
     int currentItems, totalItems, scrollOutItems;
     int index;
     int offset = 1;
-    SwipeRefreshLayout mSwipeRefreshLayout;
+    SwipeRefreshLayout swipeRefreshLayout;
     TextView textView;
 
     public FragmentA() {
     }
 
-    public interface FavoritesListUpdater {
-        void removeFavorite(ListItem coin);
-        void addFavorite(ListItem coin);
-        void performFavsSort();
+    @Override
+    public void onRefresh() {
+        getData(1);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +66,7 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_a, container, false);
 
+        swipeRefreshLayout=view.findViewById(R.id.swipeRefresh);
         recyclerView = view.findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -78,7 +77,6 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
         textView.setVisibility(View.INVISIBLE);
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-        getData(1);
         adapter = new CoinAdapter(items, getContext());
 
         recyclerView.addItemDecoration(new DividerItemDecorator(ContextCompat.getDrawable(getContext(),
@@ -86,9 +84,15 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
 
         recyclerView.setAdapter(adapter);
 
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
 
-
-
+                    getData(1);
+                }
+        });
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener()
 
         {
@@ -112,9 +116,10 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
 
                     // change offset to the number you want to add items....loading 10 items at a time
 
-
-                    offset = offset + 100;
-                    getData(offset);
+                   if(offset<1900) {
+                       offset = offset + 100;
+                       getData(offset);
+                   }
                 }
             }
         });
@@ -122,7 +127,7 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
     }
 
     public void getData(final int startItem) {
-       // mSwipeRefreshLayout.setRefreshing(true);
+        swipeRefreshLayout.setRefreshing(true);
         Call<Coin> call=apiInterface.getCoins("/v2/ticker/?start="+startItem+"&limit=100&sort=rank&structure=array&convert=BTC");
         call.enqueue(new Callback<Coin>() {
             @Override
@@ -136,6 +141,7 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                         String rank = String.valueOf(coin.getData().get(i).getRank());
                         String name = coin.getData().get(i).getName();
                         String symbol = coin.getData().get(i).getSymbol();
+                        String website=coin.getData().get(i).getWebsiteSlug();
                         DecimalFormat decimal = new DecimalFormat("0.00");
                         Double pricevalue = coin.getData().get(i).getQuotes().getUSD().getPrice();
                         String price = decimal.format(pricevalue);
@@ -176,11 +182,10 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                         }
                         ListItem listItem1 = new ListItem(id, rank, name, symbol, price, market, volume,
                                 oneHour, twentyHour, sevenDay, totalSupply
-                        , mSupply, circulatorySupply, btcPrice);
+                        , mSupply, circulatorySupply, btcPrice, website);
                         items.add(listItem1);
                         adapter.notifyDataSetChanged();
-                   //     mSwipeRefreshLayout.setRefreshing(false);
-
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 }
             @Override
@@ -189,28 +194,13 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                 textView.setText(t.getMessage());
                 textView.setTextColor(Color.parseColor("#FFFFFF"));
 
+                swipeRefreshLayout.setRefreshing(false);
+
             }
         });
 
     }
 
-
-    @Override
-    public void onRefresh() {
-        Handler handler=new Handler();
-        Runnable r=new Runnable() {
-            @Override
-            public void run() {
-                while (offset<=300){
-
-                    getData(offset);
-                    offset=offset+100;
-                }
-            }
-        };
-        handler.postDelayed(r,2000);
-
-    }
 }
 
 

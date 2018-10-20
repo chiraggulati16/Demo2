@@ -30,8 +30,6 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
    List<ListItem> listItems;
 
     private Context context;
-    private WeakReference<FragmentA.FavoritesListUpdater> favsUpdateCallbackRef;
-
     public static final String Coin_Name="name";
     public static final String Coin_Id="id";
     public static final String Coin_Symbol="symbol";
@@ -45,6 +43,7 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
     public static final String Coin_Total_Supply="totalSupply";
     public static final String Coin_Max_Supply="maxSupply";
     public static final String Coin_Circulatory_Supply="circulatorySupply";
+    public static final String Coin_Website="website";
 
     public CoinAdapter(List<ListItem> listItems, Context context) {
         this.listItems=listItems;
@@ -109,10 +108,10 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
                intent.putExtra(Coin_Total_Supply, list.getTotalSupply());
                intent.putExtra(Coin_Volume, list.getVolume24h());
                intent.putExtra(Coin_Market, list.getMarketCap());
+               intent.putExtra(Coin_Website, list.getWebsite());
                context.startActivity(intent);
             }
         });
-
 
     }
 
