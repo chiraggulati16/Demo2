@@ -2,6 +2,7 @@ package com.example.hp.demo.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,18 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hp.demo.CoinDetail;
-import com.example.hp.demo.Fragments.FragmentA;
-import com.example.hp.demo.Model.CoinFavoritesStructures;
 import com.example.hp.demo.Model.ListItem;
 import com.example.hp.demo.R;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
-import com.varunest.sparkbutton.SparkButton;
-import com.varunest.sparkbutton.SparkEventListener;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
@@ -58,7 +55,7 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CoinAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final CoinAdapter.ViewHolder holder, final int position) {
         final ListItem list=listItems.get(position);
         Picasso.get()
                 .load(new String(imageUrl).concat(Integer.toString(Integer.parseInt(list.getId()))).concat(".png")).into(holder.imageView);
@@ -70,6 +67,12 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
         holder.oneHour.setText(list.getPercentChange1h());
         holder.twentyFourHour.setText(list.getPercentChange24h());
         holder.sevenDay.setText(list.getPercentChange7d());
+
+        final SharedPreferences sharedPreferences = context.getSharedPreferences("App", 0);
+        boolean check = sharedPreferences.getBoolean(list.getId(), false);
+
+        holder.favButton.setFavorite(check);
+
         if(list.getPercentChange1h().contains("-")) {
             holder.oneHour.setTextColor(Color.parseColor("#ff1a1a"));
         }
@@ -112,7 +115,22 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.ViewHolder> {
                context.startActivity(intent);
             }
         });
+        holder.favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if (holder.favButton.isFavorite()) {
+                    editor.putBoolean(list.getId(), false);
+                    holder.favButton.setFavorite(false);
+                } else {
 
+                    editor.putBoolean(list.getId(), true);
+                    holder.favButton.setFavorite(true);
+                }
+                editor.apply();
+
+            }
+        });
     }
 
 

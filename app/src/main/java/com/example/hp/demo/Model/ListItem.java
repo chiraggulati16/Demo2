@@ -38,6 +38,14 @@ public class ListItem {
         this.website=website;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        ListItem obj1 = (ListItem) obj;
+        if (this.id.equals(obj1.getId())) {
+            return true;
+        }
+        return false;
+    }
     /*public ListItem(String id, String name, String symbol) {
         this.id = id;
         this.name = name;

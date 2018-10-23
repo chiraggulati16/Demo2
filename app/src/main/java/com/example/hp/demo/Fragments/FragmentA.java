@@ -3,7 +3,6 @@ package com.example.hp.demo.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,15 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.widget.AbsListView;
 import android.widget.TextView;
 
-import com.example.hp.demo.Apis.ApiClient;
-import com.example.hp.demo.GlobalPojo.Data;
-import com.example.hp.demo.Interfaces.ApiInterface;
 import com.example.hp.demo.Adapters.CoinAdapter;
+import com.example.hp.demo.Apis.ApiClient;
 import com.example.hp.demo.DividerItemDecorator;
+import com.example.hp.demo.Interfaces.ApiInterface;
 import com.example.hp.demo.Model.ListItem;
 import com.example.hp.demo.Pojo.Coin;
 import com.example.hp.demo.R;
@@ -85,49 +81,50 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setOnRefreshListener(this);
+
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
                 swipeRefreshLayout.setRefreshing(true);
 
-                    getData(1);
-                }
-        });
-        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener()
-
-        {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
-                    isScrolling = true;
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                currentItems = layoutManager.getChildCount();
-                totalItems = layoutManager.getItemCount();
-                scrollOutItems = layoutManager.findFirstVisibleItemPosition();
-
-                if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
-                    isScrolling = false;
-
-                    // change offset to the number you want to add items....loading 10 items at a time
-
-                   if(offset<1900) {
-                       offset = offset + 100;
-                       getData(offset);
-                   }
-                }
+                getData(1);
             }
         });
+//        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener()
+
+//        {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+//                    isScrolling = true;
+//                }
+//            }
+
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                currentItems = layoutManager.getChildCount();
+//                totalItems = layoutManager.getItemCount();
+//                scrollOutItems = layoutManager.findFirstVisibleItemPosition();
+//
+//                if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
+//                    isScrolling = false;
+//
+//                    // change offset to the number you want to add items....loading 10 items at a time
+//
+//                   if(offset<1900) {
+//                       offset = offset + 100;
+//                       getData(offset);
+//                   }
+//                }
+//            }
+//        });
         return view;
     }
 
     public void getData(final int startItem) {
-        swipeRefreshLayout.setRefreshing(true);
+//        swipeRefreshLayout.setRefreshing(true);
         Call<Coin> call=apiInterface.getCoins("/v2/ticker/?start="+startItem+"&limit=100&sort=rank&structure=array&convert=BTC");
         call.enqueue(new Callback<Coin>() {
             @Override
@@ -135,7 +132,10 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                 textView.setVisibility(View.INVISIBLE);
                 Coin coin = response.body();
                 int total = coin.getMetadata().getNumCryptocurrencies();
-
+                int count = startItem + 100;
+                if (count < 200) {
+                    getData(count);
+                }
                     for (int i = 0; i < coin.getData().size(); i++) {
                         String id = String.valueOf(coin.getData().get(i).getId());
                         String rank = String.valueOf(coin.getData().get(i).getRank());
@@ -183,9 +183,13 @@ public class FragmentA extends Fragment implements SwipeRefreshLayout.OnRefreshL
                         ListItem listItem1 = new ListItem(id, rank, name, symbol, price, market, volume,
                                 oneHour, twentyHour, sevenDay, totalSupply
                         , mSupply, circulatorySupply, btcPrice, website);
-                        items.add(listItem1);
+                        if (!items.contains(listItem1)) {
+                            items.add(listItem1);
+                        }
+
                         adapter.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
+
                     }
                 }
             @Override
